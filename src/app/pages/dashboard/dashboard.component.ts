@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartItem } from 'chart.js';
 import Chart from 'chart.js/auto';
+import { FinnhubService } from 'src/app/services/finnhub/finnhub.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,6 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild('myChart') myChart: any;
-
   labels = ['January', 'February', 'March', 'April', 'May', 'June'];
 
   data = {
@@ -30,9 +29,16 @@ export class DashboardComponent implements OnInit {
     options: {},
   };
 
-  constructor() {}
+  constructor(private finnhub: FinnhubService) {}
 
   ngOnInit(): void {
+    // this.finnhub.getCompanyProfile('AAPL').subscribe({
+    //   next: (profile) => {
+    //     console.log('Company Profile: ', profile);
+    //   },
+    // });
+
+    // Setup chart.js
     const myChart = new Chart(
       document.getElementById('myChart') as ChartItem,
       this.config
