@@ -11,6 +11,8 @@ import { CompanyReportComponent } from './pages/report/company-report/company-re
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { TemplatesModule } from './templates/templates.module';
+import { BalanceComponent } from './pages/balance/balance.component';
+import { WatchListComponent } from './pages/watch-list/watch-list.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { TemplatesModule } from './templates/templates.module';
     DashboardComponent,
     ReportComponent,
     CompanyReportComponent,
+    BalanceComponent,
+    WatchListComponent,
   ],
   imports: [
     BrowserModule,

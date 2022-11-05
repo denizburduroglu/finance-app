@@ -37,11 +37,5 @@ export class DashboardComponent implements OnInit {
     //     console.log('Company Profile: ', profile);
     //   },
     // });
-
-    // Setup chart.js
-    const myChart = new Chart(
-      document.getElementById('myChart') as ChartItem,
-      this.config
-    );
   }
 }
