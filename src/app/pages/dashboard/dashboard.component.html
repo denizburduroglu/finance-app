@@ -1,17 +1,16 @@
-<h1>Dashboard</h1>
-<mat-grid-list cols="2" rowHeight="2:1">
+<h1>Dashboard {{ moment.format("YYYY") }}</h1>
+<mat-grid-list cols="1" rowHeight="2:1">
   <mat-grid-tile>
     <mat-card style="width: 90%; height: 90%">
-      <app-chart-template type="bar"></app-chart-template>
+      <app-chart-template
+        type="line"
+        [data]="expensesData"
+      ></app-chart-template>
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile>
-    <mat-card>Simple card</mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>Simple card</mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>Simple card</mat-card>
+    <mat-card style="width: 90%; height: 90%">
+      <app-chart-template type="line"></app-chart-template>
+    </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

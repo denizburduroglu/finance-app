@@ -13,6 +13,9 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { TemplatesModule } from './templates/templates.module';
 import { BalanceComponent } from './pages/balance/balance.component';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
+import { RocketMoneyCsvService } from './services/rocket-money-csv/rocket-money-csv.service';
+import { StoreModule } from '@ngrx/store';
+import { transactionsReducer } from './global/ngrx.state';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,11 @@ import { WatchListComponent } from './pages/watch-list/watch-list.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     TemplatesModule,
+    StoreModule.forRoot({
+      transactions: transactionsReducer,
+    }),
   ],
-  providers: [FinnhubService],
+  providers: [FinnhubService, RocketMoneyCsvService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

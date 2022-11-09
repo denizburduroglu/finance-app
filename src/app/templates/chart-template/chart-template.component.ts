@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChartConfiguration, ChartItem } from 'chart.js';
+import { v4 as uuidv4 } from 'uuid';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -7,9 +8,11 @@ import Chart from 'chart.js/auto';
   templateUrl: './chart-template.component.html',
   styleUrls: ['./chart-template.component.css'],
 })
-export class ChartTemplateComponent implements OnInit {
+export class ChartTemplateComponent {
+  uuid: string = uuidv4();
+
   @Input() type: any = 'line';
-  @Input() data = {
+  @Input() data: any = {
     labels: ['11/01', '11/02', '11/03', '11/04', '11/05', '11/06'],
     datasets: [
       {
@@ -29,13 +32,16 @@ export class ChartTemplateComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     // Setup chart.js
-    const myChart = new Chart(document.getElementById('myChart') as ChartItem, {
-      type: this.type,
-      data: this.data,
-      options: {},
-    });
+    const myChart = new Chart(
+      document.getElementById(`myChart-${this.uuid}`) as ChartItem,
+      {
+        type: this.type,
+        data: this.data,
+        options: {},
+      }
+    );
   }
 }
 
